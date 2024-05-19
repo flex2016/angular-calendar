@@ -109,6 +109,13 @@
   border-radius: 50%;
 }
 
+@media (hover: none) {
+  .calendar-grid-cell:hover > div {
+    background: transparent;
+    border-radius: 0;
+  }
+}
+
 @media (max-width: 768px) {
   .calendar-headline {
     font-size: 16px;
