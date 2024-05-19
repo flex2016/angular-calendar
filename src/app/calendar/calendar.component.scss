@@ -11,9 +11,10 @@
 }
 
 .calendar-headline {
-  margin-bottom: 10px;
-  padding: 0 20px;
-    font-size: 18px;
+  // margin-bottom: 10px;
+  padding: 20px 0;
+  font-size: 18px;
+  background-color: aliceblue;
 }
 
 .calendar-headline-month {
@@ -24,6 +25,7 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
+  padding: 0 20px;
 }
 
 .calendar-headline-control {
@@ -31,14 +33,15 @@
 }
 
 .calendar-headline-control:hover {
-  text-decoration: underline;
+  color: #000;
+  font-weight: 600;
 }
 
 .calendar-weeks-grid {
   display: grid;
   grid-template-columns: repeat(7, minmax(0, 1fr));
   font-size: 16px;
-  margin-bottom: 10px;
+  margin-top: 30px;
   color: rgb(81, 81, 81);
 }
 
@@ -66,7 +69,7 @@
   position: relative;
 }
 
-.calendar-grid-cell>div {
+.calendar-grid-cell > div {
   width: 60px;
   /* Adjust size as needed */
   height: 60px;
@@ -75,30 +78,31 @@
   align-items: center;
   justify-content: center;
   transition: all 0.1s;
+  font-weight: 600;
 }
 
-.calendar-grid-cell:hover>div {
+.calendar-grid-cell:hover > div {
   background: #9ba3bf;
   border-radius: 50%;
 }
 
-.calendar-grid-cell-active>div {
+.calendar-grid-cell-active > div {
   background: green;
   color: #000;
   border-radius: 50%;
 }
 
-.calendar-grid-cell-disabled>div {
+.calendar-grid-cell-disabled > div {
   color: grey;
   cursor: not-allowed;
 }
 
-.calendar-grid-cell-inactive>div {
+.calendar-grid-cell-inactive > div {
   color: transparent;
   cursor: not-allowed;
 }
 
-.calendar-grid-cell-current>div {
+.calendar-grid-cell-current > div {
   background: grey;
   color: #000;
   border-radius: 50%;

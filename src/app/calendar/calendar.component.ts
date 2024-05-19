@@ -52,7 +52,7 @@ export class CalendarComponent {
 
   setActiveDay(day: DateTime): void {
     if (
-      !this.isPastDate(day) ||
+      !this.isPastDate(day) &&
       day.month === this.firstDayOfActiveMonth().month
     ) {
       this.activeDay.set(day);
