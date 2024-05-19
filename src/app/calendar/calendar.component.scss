@@ -3,18 +3,22 @@
   justify-content: center;
   align-items: center;
   height: 100vh;
+  padding: 20px;
+  box-sizing: border-box;
 }
 
 .calendar {
   padding-right: 10px;
   min-width: 384px;
+  width: 100%;
+  max-width: 600px;
 }
 
 .calendar-headline {
-  // margin-bottom: 10px;
   padding: 20px 0;
   font-size: 18px;
   background-color: aliceblue;
+  text-align: center;
 }
 
 .calendar-headline-month {
@@ -51,15 +55,15 @@
 
 .calendar-grid {
   display: grid;
-  grid-template-columns: repeat(7, 100px);
-  grid-template-rows: repeat(5, 100px);
+  grid-template-columns: repeat(7, 1fr);
+  grid-template-rows: auto;
   border-top: 1px solid rgb(190, 190, 190);
   border-left: 1px solid rgb(190, 190, 190);
+  gap: 1px;
 }
 
 .calendar-grid-cell {
-  width: 100px;
-  height: 100px;
+  aspect-ratio: 1;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -70,10 +74,8 @@
 }
 
 .calendar-grid-cell > div {
-  width: 60px;
-  /* Adjust size as needed */
-  height: 60px;
-  /* Adjust size as needed */
+  width: 60%;
+  height: 60%;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -83,12 +85,6 @@
 
 .calendar-grid-cell:hover > div {
   background: #9ba3bf;
-  border-radius: 50%;
-}
-
-.calendar-grid-cell-active > div {
-  background: green;
-  color: #000;
   border-radius: 50%;
 }
 
@@ -106,4 +102,45 @@
   background: grey;
   color: #000;
   border-radius: 50%;
+}
+.calendar-grid-cell-active > div {
+  background: green;
+  color: #000;
+  border-radius: 50%;
+}
+
+@media (max-width: 768px) {
+  .calendar-headline {
+    font-size: 16px;
+  }
+
+  .calendar-grid {
+    grid-template-columns: repeat(7, 1fr);
+  }
+
+  .calendar-grid-cell {
+    min-width: 40px;
+    min-height: 40px;
+  }
+
+  .calendar-grid-cell > div {
+    width: 50%;
+    height: 50%;
+  }
+}
+
+@media (max-width: 480px) {
+  .calendar-headline {
+    font-size: 14px;
+  }
+
+  .calendar-grid-cell {
+    min-width: 30px;
+    min-height: 30px;
+  }
+
+  .calendar-grid-cell > div {
+    width: 40%;
+    height: 40%;
+  }
 }
