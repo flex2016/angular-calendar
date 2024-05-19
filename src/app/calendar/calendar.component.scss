@@ -91,6 +91,7 @@
 .calendar-grid-cell-disabled > div {
   color: grey;
   cursor: not-allowed;
+  opacity: 0.5;
 }
 
 .calendar-grid-cell-inactive > div {
