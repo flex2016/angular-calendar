@@ -5,7 +5,7 @@ import {
   computed,
   signal,
 } from '@angular/core';
-import { DateTime, Info, Interval } from 'luxon';
+import { DateTime, Interval } from 'luxon';
 import { CommonModule } from '@angular/common';
 
 @Component({
@@ -22,11 +22,27 @@ export class CalendarComponent {
   );
   activeDay: WritableSignal<DateTime> = signal(this.today());
   currentDay: WritableSignal<DateTime> = signal(this.today());
-  weekDays: Signal<string[]> = signal(Info.weekdays('short'));
+
+  weekDays: Signal<string[]> = signal([
+    'Sun',
+    'Mon',
+    'Tue',
+    'Wed',
+    'Thu',
+    'Fri',
+    'Sat',
+  ]);
+
   daysOfMonth: Signal<DateTime[]> = computed(() => {
     return Interval.fromDateTimes(
-      this.firstDayOfActiveMonth().startOf('week'),
-      this.firstDayOfActiveMonth().endOf('month').endOf('week')
+      this.firstDayOfActiveMonth()
+        .startOf('month')
+        .startOf('week')
+        .minus({ days: 1 }),
+      this.firstDayOfActiveMonth()
+        .endOf('month')
+        .endOf('week')
+        .minus({ days: 1 })
     )
       .splitBy({ day: 1 })
       .map((d) => {
@@ -36,6 +52,7 @@ export class CalendarComponent {
         return d.start;
       });
   });
+
   DATE_MED = DateTime.DATE_MED;
 
   goToPreviousMonth(): void {
@@ -58,6 +75,7 @@ export class CalendarComponent {
       this.activeDay.set(day);
     }
   }
+
   setCurrentDay(day: DateTime): void {
     if (day < this.today()) {
       return;
@@ -66,6 +84,7 @@ export class CalendarComponent {
       this.currentDay.set(day);
     }
   }
+
   isPastDate(day: DateTime): boolean {
     return day < this.today();
   }
