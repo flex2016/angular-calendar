@@ -30,10 +30,6 @@ describe('CalendarComponent', () => {
     const today = DateTime.local().startOf('day').toISODate();
     expect(component.today().toISODate()).toEqual(today);
   });
-  it("should initialize with today's date", () => {
-    const today = DateTime.local().startOf('day').toISODate();
-    expect(component.today().toISODate()).toEqual(today);
-  });
 
   it('should go to the previous month', () => {
     const initialMonth = component.firstDayOfActiveMonth().month;
