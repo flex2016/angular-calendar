@@ -20,6 +20,7 @@ export class CalendarComponent {
   firstDayOfActiveMonth: WritableSignal<DateTime> = signal(
     this.today().startOf('month')
   );
+
   activeDay: WritableSignal<DateTime> = signal(this.today());
   currentDay: WritableSignal<DateTime> = signal(this.today());
 
@@ -52,8 +53,6 @@ export class CalendarComponent {
         return d.start;
       });
   });
-
-  DATE_MED = DateTime.DATE_MED;
 
   goToPreviousMonth(): void {
     this.firstDayOfActiveMonth.set(
